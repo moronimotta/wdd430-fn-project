@@ -1,1 +1,20 @@
-<p>navbar works!</p>
+<nav class="navbar-shell">
+	<div class="brand">BYUI Bookstore</div>
+	<div class="nav-links">
+		<a routerLink="/products" class="nav-link">Products</a>
+		<a routerLink="/cart" class="nav-link">Cart <span class="cart-count">({{ cartItemCount$ | async }})</span></a>
+		<a routerLink="/checkout" class="nav-link">Checkout</a>
+		<a routerLink="/admin" class="nav-link" *ngIf="(currentUser$ | async)?.role === 'admin'">Admin</a>
+	</div>
+	<div class="nav-auth">
+		<ng-container *ngIf="currentUser$ | async as user; else loggedOut">
+			<span class="nav-user">Hi, {{ user.name }}</span>
+			<button class="nav-button" type="button" (click)="logout()">Logout</button>
+		</ng-container>
+		<ng-template #loggedOut>
+			<a routerLink="/login" class="nav-button">Login</a>
+			<a routerLink="/register" class="nav-button nav-button-outline">Register</a>
+		</ng-template>
+	</div>
+</nav>
+

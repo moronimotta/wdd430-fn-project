@@ -1,1 +1,11 @@
-<p>admin works!</p>
+<section class="admin-shell">
+	<div class="admin-hero">
+		<p class="eyebrow">Admin dashboard</p>
+		<h2>Orders and inventory</h2>
+	</div>
+
+	<p class="status error" *ngIf="errorMessage">{{ errorMessage }}</p>
+	<p class="status warning" *ngIf="!isAdmin">Log in with an admin account to view order history.</p>
+
+	<app-admin-products [products]="products" [orders]="orders" (productsChanged)="loadProducts()"></app-admin-products>
+</section>

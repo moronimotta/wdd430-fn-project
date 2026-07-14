@@ -1,4 +1,1 @@
-import { Service } from '@angular/core';
-
-@Service()
-export class Auth {}
+export { AuthService as Auth } from './auth.service';

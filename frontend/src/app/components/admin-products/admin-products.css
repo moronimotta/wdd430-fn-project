@@ -1,0 +1,137 @@
+.admin-grid {
+	grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+
+.panel {
+	padding: 1.25rem;
+	border-radius: 1.35rem;
+}
+
+.inventory-panel,
+.orders-panel {
+	display: grid;
+	gap: 1rem;
+}
+
+.panel-header {
+	display: flex;
+	justify-content: space-between;
+	gap: 1rem;
+	align-items: center;
+	margin-bottom: 1rem;
+}
+
+.panel-header h3 {
+	margin: 0;
+}
+
+.panel-header > div {
+	display: grid;
+	gap: 0.2rem;
+}
+
+.panel-header span,
+.table-row,
+.order-card small {
+	color: var(--muted);
+}
+
+.table-row {
+	display: grid;
+	grid-template-columns: 1.5fr auto auto auto;
+	gap: 1rem;
+	padding: 0.85rem 0;
+	border-bottom: 1px solid var(--border);
+}
+
+.table-row:last-child {
+	border-bottom: 0;
+}
+
+.table-head {
+	font-size: 0.82rem;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	font-weight: 800;
+	color: var(--muted);
+}
+
+.product-row strong,
+.product-row small {
+	display: block;
+}
+
+.product-row small {
+	margin-top: 0.25rem;
+	color: var(--muted);
+}
+
+.product-form {
+	display: grid;
+	gap: 1rem;
+	padding: 1rem;
+	border: 1px solid var(--border);
+	border-radius: 1rem;
+	background: var(--surface-strong);
+}
+
+.product-form-grid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 1rem;
+}
+
+.row-actions {
+	display: flex;
+	gap: 0.5rem;
+	flex-wrap: wrap;
+	justify-content: flex-end;
+}
+
+.row-actions .button {
+	padding: 0.55rem 0.85rem;
+}
+
+.low-stock {
+	color: #b45309;
+	font-weight: 800;
+}
+
+.order-card {
+	padding: 1rem;
+	border-radius: 1rem;
+	background: var(--surface-strong);
+	border: 1px solid var(--border);
+	display: grid;
+	gap: 0.55rem;
+}
+
+.order-row,
+.order-meta {
+	display: flex;
+	justify-content: space-between;
+	gap: 0.75rem;
+	align-items: center;
+}
+
+@media (max-width: 720px) {
+	.table-row {
+		grid-template-columns: 1fr;
+		gap: 0.35rem;
+	}
+
+	.product-form-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.order-row,
+	.order-meta,
+	.panel-header {
+		flex-direction: column;
+		align-items: start;
+	}
+
+	.row-actions {
+		justify-content: flex-start;
+	}
+}

@@ -1,1 +1,22 @@
-<p>home works!</p>
+<section class="home-hero">
+	<div class="hero-copy">
+		<p class="eyebrow">BYUI campus bookstore</p>
+		<h1>Textbooks, essentials, and a checkout flow that stays out of the way.</h1>
+		<p>
+			Browse a small curated catalog, add items to your cart, and pay through Stripe.
+			Admins can review inventory and order history from a single dashboard.
+		</p>
+
+		<div class="actions">
+			<a class="button primary" routerLink="/products">Shop products</a>
+			<a class="button secondary" routerLink="/login">Admin login</a>
+		</div>
+	</div>
+
+	<div class="hero-panel">
+		<div class="mini-card" *ngFor="let item of highlights">
+			<h3>{{ item.title }}</h3>
+			<p>{{ item.copy }}</p>
+		</div>
+	</div>
+</section>

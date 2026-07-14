@@ -1,3 +1,199 @@
-/* You can add global styles to this file, and also import other style files */
-
 @import 'tailwindcss';
+
+:root {
+	color-scheme: light;
+	--bg: #eef5ff;
+	--surface: rgba(255, 255, 255, 0.94);
+	--surface-strong: #ffffff;
+	--text: #1f2937;
+	--muted: #667085;
+	--border: rgba(0, 54, 122, 0.14);
+	--accent: #0057b8;
+	--accent-2: #003d7a;
+	--accent-3: #0b4f99;
+	--shadow: 0 24px 60px rgba(0, 61, 122, 0.12);
+}
+
+html {
+	background:
+		radial-gradient(circle at top left, rgba(0, 87, 184, 0.18), transparent 28%),
+		radial-gradient(circle at top right, rgba(0, 61, 122, 0.12), transparent 22%),
+		linear-gradient(180deg, #ffffff 0%, var(--bg) 100%);
+}
+
+body {
+	margin: 0;
+	min-height: 100vh;
+	color: var(--text);
+	font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+	background: transparent;
+}
+
+a {
+	color: inherit;
+}
+
+button,
+input {
+	font: inherit;
+}
+
+.app-shell {
+	width: min(1180px, calc(100% - 2rem));
+	margin: 0 auto;
+	padding: 1.5rem 0 3rem;
+}
+
+.eyebrow {
+	text-transform: uppercase;
+	letter-spacing: 0.18em;
+	font-size: 0.75rem;
+	color: var(--accent-2);
+	margin: 0 0 0.75rem;
+	font-weight: 800;
+}
+
+.button,
+.nav-button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
+	border-radius: 999px;
+	padding: 0.85rem 1.1rem;
+	font-weight: 700;
+	text-decoration: none;
+	border: 1px solid transparent;
+	cursor: pointer;
+	transition: transform 160ms ease, box-shadow 160ms ease, background-color 160ms ease, border-color 160ms ease;
+}
+
+.button:hover,
+.nav-button:hover {
+	transform: translateY(-1px);
+}
+
+.button.primary,
+.nav-button {
+	background: linear-gradient(135deg, var(--accent), #003d7a);
+	color: white;
+	box-shadow: 0 12px 24px rgba(0, 87, 184, 0.24);
+}
+
+.button.secondary,
+.nav-button-outline {
+	background: rgba(255, 255, 255, 0.86);
+	border-color: var(--border);
+	color: var(--text);
+}
+
+.button.ghost {
+	background: #f3f4f6;
+	color: var(--text);
+}
+
+.button.danger {
+	background: #fee2e2;
+	color: #991b1b;
+}
+
+.button.disabled,
+.button:disabled {
+	opacity: 0.55;
+	pointer-events: none;
+	box-shadow: none;
+}
+
+.form-control {
+	width: 100%;
+	border-radius: 0.95rem;
+	border: 1px solid var(--border);
+	padding: 0.9rem 1rem;
+	background: var(--surface-strong);
+	color: var(--text);
+	box-shadow: inset 0 1px 2px rgba(15, 23, 42, 0.04);
+}
+
+.form-group {
+	display: grid;
+	gap: 0.45rem;
+	margin-bottom: 1rem;
+}
+
+.form-group label {
+	font-size: 0.93rem;
+	font-weight: 700;
+}
+
+.actions {
+	display: flex;
+	gap: 0.75rem;
+	flex-wrap: wrap;
+}
+
+.status {
+	margin: 0.9rem 0 0;
+	padding: 0.8rem 1rem;
+	border-radius: 0.9rem;
+	border: 1px solid transparent;
+}
+
+.status.error { background: #fee2e2; color: #991b1b; border-color: #fecaca; }
+.status.success { background: #dcfce7; color: #166534; border-color: #bbf7d0; }
+.status.warning { background: #ffedd5; color: #9a3412; border-color: #fed7aa; }
+
+.card,
+.panel,
+.auth-card,
+.hero-copy,
+.hero-panel,
+.checkout-card,
+.cart-card,
+.details-card,
+.admin-hero,
+.nav-auth,
+.navbar-shell {
+	background: var(--surface);
+	border: 1px solid rgba(0, 61, 122, 0.08);
+	backdrop-filter: blur(10px);
+	box-shadow: var(--shadow);
+}
+
+.price {
+	font-size: 1.4rem;
+	font-weight: 800;
+	color: var(--accent-2);
+}
+
+.muted {
+	color: var(--muted);
+}
+
+.section-title {
+	margin: 0 0 0.35rem;
+	font-size: clamp(1.5rem, 2vw, 2rem);
+}
+
+.section-copy {
+	margin: 0;
+	color: var(--muted);
+	line-height: 1.65;
+}
+
+.product-grid,
+.admin-grid,
+.summary-list {
+	display: grid;
+	gap: 1rem;
+}
+
+@media (max-width: 720px) {
+	.app-shell {
+		width: min(100% - 1rem, 1180px);
+		padding-top: 1rem;
+	}
+
+	.actions {
+		flex-direction: column;
+	}
+}

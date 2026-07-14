@@ -1,1 +1,23 @@
-<p>login works!</p>
+<section class="auth-shell">
+	<form class="auth-card" (ngSubmit)="onLogin()">
+		<p class="eyebrow">Welcome back</p>
+		<h2>Sign in to manage orders and checkout.</h2>
+
+		<div class="form-group">
+			<label for="email">Email</label>
+			<input id="email" name="email" type="email" class="form-control" [(ngModel)]="email" placeholder="admin@byui.edu" autocomplete="email" />
+		</div>
+
+		<div class="form-group">
+			<label for="password">Password</label>
+			<input id="password" name="password" type="password" class="form-control" [(ngModel)]="password" placeholder="••••••••" autocomplete="current-password" />
+		</div>
+
+		<p class="status error" *ngIf="errorMessage">{{ errorMessage }}</p>
+
+		<div class="actions">
+			<button class="button primary" type="submit">Log in</button>
+			<a class="button secondary" routerLink="/register">Create account</a>
+		</div>
+	</form>
+</section>

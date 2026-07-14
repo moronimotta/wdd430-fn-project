@@ -1,1 +1,28 @@
-<p>register works!</p>
+<section class="auth-shell">
+	<form class="auth-card" (ngSubmit)="onRegister()">
+		<p class="eyebrow">Get started</p>
+		<h2>Create a customer account.</h2>
+
+		<div class="form-group">
+			<label for="name">Name</label>
+			<input id="name" name="name" type="text" class="form-control" [(ngModel)]="name" placeholder="Your name" autocomplete="name" />
+		</div>
+
+		<div class="form-group">
+			<label for="email">Email</label>
+			<input id="email" name="email" type="email" class="form-control" [(ngModel)]="email" placeholder="you@example.com" autocomplete="email" />
+		</div>
+
+		<div class="form-group">
+			<label for="password">Password</label>
+			<input id="password" name="password" type="password" class="form-control" [(ngModel)]="password" placeholder="Create a password" autocomplete="new-password" />
+		</div>
+
+		<p class="status error" *ngIf="errorMessage">{{ errorMessage }}</p>
+
+		<div class="actions">
+			<button class="button primary" type="submit">Create account</button>
+			<a class="button secondary" routerLink="/login">Back to login</a>
+		</div>
+	</form>
+</section>

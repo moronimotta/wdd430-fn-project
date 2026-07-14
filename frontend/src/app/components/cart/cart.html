@@ -1,1 +1,33 @@
-<p>cart works!</p>
+<section class="cart-shell">
+  <div class="cart-card">
+    <p class="eyebrow">Shopping cart</p>
+    <h2>Your selected textbooks</h2>
+
+    <div class="cart-item" *ngFor="let item of cartItems">
+      <img [src]="item.product.image" [alt]="item.product.name" />
+
+      <div class="cart-item-copy">
+        <h3>{{ item.product.name }}</h3>
+        <p>{{ item.product.description }}</p>
+        <div class="cart-meta">
+          <span>Qty {{ item.quantity }}</span>
+          <span>$ {{ item.product.price * item.quantity }}</span>
+        </div>
+      </div>
+
+      <button class="button ghost" type="button" (click)="remove(item.product._id)">Remove</button>
+    </div>
+
+    <p *ngIf="!cartItems.length">Your cart is empty. Browse products to add books.</p>
+
+    <div class="checkout-footer">
+      <span>Total</span>
+      <strong>$ {{ getTotal() }}</strong>
+    </div>
+
+    <div class="actions">
+      <button class="button danger" type="button" (click)="clear()" [disabled]="!cartItems.length">Clear cart</button>
+      <a class="button primary" routerLink="/checkout" [class.disabled]="!cartItems.length">Checkout</a>
+    </div>
+  </div>
+</section>

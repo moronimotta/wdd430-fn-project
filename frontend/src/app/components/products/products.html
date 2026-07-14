@@ -1,21 +1,33 @@
-<h2>Products</h2>
+<section class="products-shell">
+  <div class="products-header card">
+    <div>
+      <p class="eyebrow">Catalog</p>
+      <h2 class="section-title">Featured textbooks</h2>
+    </div>
+    <div class="catalog-summary">
+      <span>{{ products.length }} products</span>
+    </div>
+  </div>
 
-<div *ngFor="let product of products">
+  <div class="product-grid">
+    <article class="product-card card" *ngFor="let product of products">
+      <img class="product-image" [src]="product.image" [alt]="product.name" />
 
-  <h3>{{ product.name }}</h3>
+      <div class="product-copy">
+        <div class="product-heading">
+          <h3>{{ product.name }}</h3>
+          <span class="price">$ {{ product.price }}</span>
+        </div>
 
-  <img
-    [src]="product.image"
-    [alt]="product.name"
-    width="200"
-  >
+        <p class="muted">{{ product.description }}</p>
 
-  <p>{{ product.description }}</p>
+        <div class="product-meta">
+          <span class="pill">Stock {{ product.stock }}</span>
+          <span class="pill">Textbook</span>
+        </div>
+      </div>
 
-  <p>$ {{ product.price }}</p>
-
-  <p>Stock: {{ product.stock }}</p>
-
-  <hr>
-
-</div>
+      <button class="button primary" (click)="addToCart(product)">Add to Cart</button>
+    </article>
+  </div>
+</section>

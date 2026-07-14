@@ -1,1 +1,46 @@
-<p>checkout works!</p>
+<section class="checkout-shell">
+	<div class="checkout-card">
+		<p class="eyebrow">Stripe checkout</p>
+		<h2>Review your order</h2>
+
+		<div class="checkout-form">
+			<div class="form-group">
+				<label for="customerName">Name</label>
+				<input id="customerName" name="customerName" class="form-control" [(ngModel)]="customerName" placeholder="Your name" autocomplete="name" />
+			</div>
+
+			<div class="form-group">
+				<label for="email">Email</label>
+				<input id="email" name="email" type="email" class="form-control" [(ngModel)]="email" placeholder="you@example.com" autocomplete="email" />
+			</div>
+		</div>
+
+		<div class="summary-list" *ngIf="cartItems.length; else emptyState">
+			<article class="summary-item" *ngFor="let item of cartItems">
+				<div>
+					<h3>{{ item.product.name }}</h3>
+					<p>{{ item.quantity }} x ${{ item.product.price }}</p>
+				</div>
+				<strong>$ {{ item.product.price * item.quantity | number:'1.2-2' }}</strong>
+			</article>
+		</div>
+
+		<ng-template #emptyState>
+			<p>Your cart is empty. Add a few textbooks to continue.</p>
+		</ng-template>
+
+		<div class="checkout-footer">
+			<span>Total</span>
+            <strong>$ {{ getTotal() | number:'1.2-2' }}</strong>
+		</div>
+
+		<p class="status" *ngIf="message">{{ message }}</p>
+
+		<div class="actions">
+			<button class="button primary" type="button" (click)="onCheckout()" [disabled]="isLoading || !cartItems.length">
+				{{ isLoading ? 'Preparing checkout...' : 'Pay with Stripe' }}
+			</button>
+			<a class="button secondary" routerLink="/cart">Back to cart</a>
+		</div>
+	</div>
+</section>
