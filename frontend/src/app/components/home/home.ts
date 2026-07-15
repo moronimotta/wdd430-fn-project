@@ -11,7 +11,6 @@ import { RouterLink } from '@angular/router';
 export class Home {
   highlights = [
     { title: 'Fast delivery', copy: 'Textbooks packed and ready for the semester.' },
-    { title: 'Simple checkout', copy: 'Essential order data only, with Stripe handling payments.' },
-    { title: 'Admin visibility', copy: 'Review inventory and recent orders from one screen.' }
+    { title: 'Best price in town!', copy: 'We guarantee the lowest prices on all your textbooks.' }
   ];
 }

@@ -1,5 +1,5 @@
-import { CommonModule } from '@angular/common';
-import { Component, OnInit, inject } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { Product } from '../../models/product';
 import { Order } from '../../models/order';
 import { ProductService } from '../../services/product.service';
@@ -19,6 +19,7 @@ export class Admin implements OnInit {
   errorMessage = '';
 
   constructor(
+    @Inject(PLATFORM_ID) private platformId: object,
     private productService: ProductService,
     private paymentService: PaymentService,
     private authService: AuthService
@@ -27,6 +28,14 @@ export class Admin implements OnInit {
   ngOnInit() {
     this.loadProducts();
 
+    if (!isPlatformBrowser(this.platformId)) {
+      return;
+    }
+
+    if (this.authService.isAdmin()) {
+      this.loadOrders();
+    }
+
     this.authService.currentUser$.subscribe((user) => {
       if (user?.role === 'admin') {
         this.loadOrders();
@@ -34,7 +43,7 @@ export class Admin implements OnInit {
       }
 
       this.orders = [];
-      this.errorMessage = 'Log in with an admin account to view orders.';
+      this.errorMessage = 'Log in with an admin account to view order history.';
     });
   }
 
@@ -51,6 +60,15 @@ export class Admin implements OnInit {
         this.errorMessage = 'Unable to load products.';
       }
     });
+  }
+
+  refreshOrders() {
+    if (!this.authService.isAdmin()) {
+      this.errorMessage = 'Log in with an admin account to view order history.';
+      return;
+    }
+
+    this.loadOrders();
   }
 
   private loadOrders() {

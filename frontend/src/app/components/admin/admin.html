@@ -6,6 +6,9 @@
 
 	<p class="status error" *ngIf="errorMessage">{{ errorMessage }}</p>
 	<p class="status warning" *ngIf="!isAdmin">Log in with an admin account to view order history.</p>
+	<div class="actions">
+		<button class="button secondary" type="button" (click)="refreshOrders()">Refresh Orders</button>
+	</div>
 
 	<app-admin-products [products]="products" [orders]="orders" (productsChanged)="loadProducts()"></app-admin-products>
 </section>
